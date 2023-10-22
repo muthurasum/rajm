@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>value</title>
+    <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+    crossorigin="anonymous" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+<style>
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.container{
+    margin-top: 40px;
+}</style>
+</head>
+<body>
+<div class="header"> <a href="#default" class="logo">API FETCH</a>
+
+<div class="header-center">
+
+<a class="active" href="#home">HOME</a>
+ <a href="login.html">LOGOUT</a>
+
+
+</div>
+
+   <div class="container">
+    <h1 class="text-center">User Contacts</h1>
+            <table class="table table-bordered">
+                <thead class="table-secondary">
+                    <tr>
+                        <th scope="col">UserName</th>
+                        <th scope="col">Email id</th>
+                        <th scope="col">Content</th>
+                    </tr>
+                </thead>
+                <tbody id="table_body">
+
+                </tbody>
+            </table>
+        </div>
+   
+    <script>
+      
+const userList = document.getElementById("root");
+
+value('https://jsonplaceholder.typicode.com/comments')
+.then(res=>{
+   return res.json()
+})
+.then((resdata)=> { 
+    let tableValue=""
+     resdata.forEach((user) => {
+        console.log(user)
+        tableValue += `<tr>
+        <td class="table-primary">${user.name}</td>
+        <td class="table-primary">${user.email}</td>
+        <td class="table-primary">${user.body}</td>
+        </tr>`
+      
+    });
+    document.getElementById("table_body").innerHTML= tableValue
+})
+.catch(error=>console.log(error))
+       
+    </script>
+<footer>
+<p><a href="#">muthurajm567@gmail.com</a></p>
+<p>Phone:987654321</p>
+</footer>
+    </body>
+
+</html
